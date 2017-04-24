@@ -1,0 +1,51 @@
+<div class="app-navbar navbar-default navbar-fixed-top">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<label class="logoTitle">Day2Day Activities</label>
+		</div>
+		<div>
+			<!--<a type="button" href="#/main"
+					class="btn btn-default navbar-btn navbar-right">Sign in</a>-->
+		</div>
+	</div>
+</div>
+<div class="main-container">
+	<div class="form-container">
+		<p class="form-label">Sign In</p>
+		<div ng-show="errorLogin" class="alert alert-danger">{{errorLogin}}</div>
+		<form ng-submit="validateuser()" name="loginForm" role="form">
+			<div class="form-group">
+				<label for="username">User Name</label>
+				<div class="error form-hint"
+					ng-show="loginForm.username.$dirty && loginForm.username.$error.required"
+					ng-cloak>{{"This field is required."}}</div>
+				<input type="text" class="form-control"
+					ng-class="(loginForm.username.$dirty && loginForm.username.$invalid) ? 'error' : ''"
+					id="username" name="username" placeholder="Enter Email Address"
+					ng-required="true" ng-model="username">
+			</div>
+
+			<div class="form-group">
+				<label for="password">Password</label>
+				<div class="help-text">
+					<a href="#/forgotPwd" class="ng-binding">Forgot password?</a>
+				</div>
+				<div class="error form-hint"
+					ng-show="loginForm.password.$dirty && loginForm.password.$error.required"
+					ng-cloak>{{"This field is required."}}</div>
+				<input type="password" class="form-control"
+					ng-class="(loginForm.password.$dirty && loginForm.password.$invalid) ? 'error' : ''"
+					id="password" name="password" placeholder="Enter Password"
+					ng-required="true" ng-model="password"> <span
+					ng-show="loginForm.password.$dirty && loginForm.password.$error.required"
+					class="help-block">Password is required</span>
+			</div>
+
+			<button type="submit" class="btn btn-primary sign-in-button">Login</button>
+			<div class="form-group">
+				<span>Need an account?</span> <a href="#/signup"
+					ng-bind="::('signup')" class="ng-binding">Sign Up</a>
+			</div>
+		</form>
+	</div>
+</div>

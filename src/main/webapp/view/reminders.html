@@ -1,0 +1,20 @@
+<!--<h3 class="contentHeader">New Reminder</h3>-->
+<div ng-include="navbar"></div>
+<div class="container">
+	<div class="row">
+		<div class="form-group">
+			<label for="title">Title:</label> <input type="title"
+				class="form-control" id="pwd" ng-model="title">
+		</div>
+		<div class="form-group">
+			<label for="content">Content:</label>
+			<p style="color: blue;">{{255 - text.length}} left</p>
+			<textarea class="form-control" rows="5" id="content" ng-model="text"></textarea>
+		</div>
+
+		<div>
+			<button type="button" class="btn btn-success"
+				ng-click="createReminder()">Save</button>
+		</div>
+	</div>
+</div>

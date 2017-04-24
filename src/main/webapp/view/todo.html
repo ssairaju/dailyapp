@@ -1,0 +1,65 @@
+<!-- <h3 class="contentHeader">
+	My Tasks <span class="label label-default">{{userTodoList.length}}</span>
+</h3>-->
+<div ng-include="navbar"></div>
+<div class="container">
+	<div class="row">
+		<form name="taskForm" role="form">
+			<table>
+				<tr>
+					<td class="td-column-space"><input type="text"
+						class="form-control"
+						ng-class="(taskForm.mtask.$dirty && taskForm.mtask.$invalid) ? 'error' : ''"
+						id="mtask" name="mtask" placeholder="Enter Task"
+						ng-required="true" ng-model="mtask"></td>
+					<td class="td-column-space"><select class="form-control"
+						id="category" name="category" ng-model="category"
+						ng-required="true"
+						ng-class="(taskForm.category.$dirty && taskForm.category.$invalid) ? 'error' : ''">
+							<option ng-repeat="category in categoryList" value="$category.id">{{category.name}}</option>
+					</select></td>
+					<td class="td-column-space">
+						<button type="button" class="btn btn-success" ng-click="addTask()"
+							ng-disabled="taskForm.$invalid">Add Task</button>
+					</td>
+					<td class="td-column-space">
+						<button type="button" class="btn btn-success"
+							ng-click="getTodoList()">Search</button>
+					</td>
+				</tr>
+				<!--<div class="form-group">
+				<div class="col-sm-10">
+					<button type="button" class="btn btn-success" ng-click="addTask()"
+						ng-disabled="taskForm.$invalid">Add Task</button>
+				</div>
+			</div>-->
+			</table>
+		</form>
+		<div class="form-group"></div>
+		<table class="table table-striped">
+			<tr>
+				<td class="td-column-space"><label for="itemname">Name</label></td>
+				<td class="td-column-space"><label for="itemname">Category</label></td>
+				<td class="td-column-space"><label for="itemname">Status</label></td>
+				<td class="td-column-space"><label for="itemname"></label></td>
+				<td class="td-column-space"><label for="itemname"></label></td>
+			</tr>
+			<tr data-ng-repeat="todo in userTodoList">
+				<td class="td-column-space"><span
+					ng-class="{strike:todo.status}" ng-bind="todo.name">{{todo.name}}</span></td>
+				<td class="td-column-space"><span
+					ng-class="{strike:todo.status}" ng-bind="todo.category">{{todo.category}}</span></td>
+				<td class="td-column-space"><span
+					ng-class="{strike:todo.status}" ng-bind="todo.description">{{todo.description}}</span></td>
+				<td><button type="button" id="markdone" ng-model="todo.id"
+						ng-click="markDone(todo.id)" class="btn btn-success btn-sm">
+						Mark Done</button></td>
+				<td><button type="button" id="removetask" ng-model="todo.id"
+						ng-click="removeTask(todo.id)" class="btn btn-failure btn-sm">
+						<span class="glyphicon glyphicon-remove-circle"></span> Delete
+					</button></td>
+				<!--<td><input ng-model="content"></td>-->
+			</tr>
+		</table>
+	</div>
+</div>

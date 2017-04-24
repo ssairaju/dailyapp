@@ -1,0 +1,95 @@
+<div class="app-navbar navbar-default navbar-fixed-top topbar">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<label class="logoTitle">Day2Day Activities</label>
+			</div>
+		</div>
+	</div>
+<div class="main-container">
+	<div class="form-container">
+		<form ng-submit="register()" name="signUpForm" role="form">
+			<p class="form-label">Sign Up for TDA</p>
+			<p class="subheading">One place to track all daily activities.</p>
+
+			<div ng-show="errorReg" class="alert alert-danger">{{errorReg}}</div>
+			{{success}}
+			<div ng-show="success" class="alert alert-default">
+				{{success}}
+				<p>
+					Please<a href='#/login' class='btn btn-link'>Login</a>to access
+					your account.
+				</p>
+			</div>
+			<div ng-show="!success">
+				<div class="form-group">
+					<label for="firstName">First Name</label>
+
+					<div class="error form-hint"
+						ng-show="signUpForm.firstName.$dirty && signUpForm.firstName.$error.required"
+						ng-cloak>{{"This field is required."}}</div>
+
+					<input type="text" class="form-control"
+						ng-class="(signUpForm.firstName.$dirty && signUpForm.firstName.$invalid) ? 'error' : ''"
+						id="firstName" name="firstName" placeholder="Enter First Name"
+						ng-required="true" ng-model="firstName">
+				</div>
+				<div class="form-group">
+					<label for="lastName">Last Name</label>
+
+					<div class="error form-hint"
+						ng-show="signUpForm.lastName.$dirty && signUpForm.lastName.$error.required"
+						ng-cloak>{{"This field is required."}}</div>
+
+					<input type="text" class="form-control"
+						ng-class="(signUpForm.lastName.$dirty && signUpForm.lastName.$invalid) ? 'error' : ''"
+						id="lastName" name="lastName" placeholder="Enter Last Name"
+						ng-required="true" ng-model="lastName">
+				</div>
+
+				<div class="form-group">
+					<label for="email">Email</label>
+					<div class="error form-hint"
+						ng-show="signUpForm.email.$dirty && signUpForm.email.$error.required"
+						ng-cloak>{{"This field is required."}}</div>
+
+					<div class="error form-hint"
+						ng-show="signUpForm.email.$dirty && signUpForm.email.$error.email"
+						ng-cloak>{{"Email is invalid."}}</div>
+
+					<input type="email" class="form-control"
+						ng-class="(signUpForm.email.$dirty && signUpForm.email.$invalid) ? 'error' : ''"
+						id="email" name="email" placeholder="Enter Email Address"
+						ng-required="true" ng-model="email">
+				</div>
+
+				<div class="form-group">
+					<label for="password">Password</label>
+
+					<div class="form-hint">To conform with our Strong Password
+						policy. Password must be more than 7 characters.</div>
+
+					<input type="password" class="form-control ok-password"
+						ng-class="(signUpForm.password.$dirty && signUpForm.password.$invalid) ? 'error' : ''"
+						id="password" name="password" placeholder="Enter Password"
+						ng-required="true" ng-model="password">
+
+					<div class="label password-count"
+						ng-class="password.length > 7 ? 'label-success' : 'label-danger'"
+						ng-cloak>{{ password | passwordCount:7 }}</div>
+
+					<div class="strength-meter">
+						<div class="strength-meter-fill"
+							data-strength="{{passwordStrength}}"></div>
+					</div>
+				</div>
+				<a href="#/login" class="btn btn-primary">Cancel</a>
+				<button type="submit" class="btn btn-primary float-right"
+					ng-disabled="signUpForm.$invalid">Continue</button>
+
+
+			</div>
+		</form>
+
+	</div>
+</div>
+</body>
